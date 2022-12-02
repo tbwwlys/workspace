@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // 为什么 var window let 就不会呢
+    //代码的本质？ 文本字符串 交给js 的编译器chrome V8引擎
+    // 分词 var name = 字符串数据类型
+var name = "windowsName";  // window global scope
+    // 编译阶段 console.log(name); // undefined 变量提升
+    // 运行阶段
+    // 内存中声明
+    // 不同的变量
+function a(){
+    var name = "Cherry";
+    console.log(this.name); //无法确定 this 值由调用的方式决定
+}
+//函数变量一定会提升 window.a()
+a(); //一段代码 内存中？ 进入执行栈
+var b = {
+    name: "Charry",
+    fu: function(){
+        console.log(this.name)
+    }
+}
+b.fu();
+var f = b.fu; //赋值 函数对象 指向 引用式赋值
+f();
+</script>
+</body>
+</html>
