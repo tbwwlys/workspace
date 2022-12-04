@@ -28,7 +28,8 @@
         call 展开来 apply []
     7. bind 返回一个被指定了this 的函数
         未来被调用时this 指向那个对象
-    8. 
+    8. that = this 作用域链
+    9. 箭头函数 内部没有this 找到外层的this
 
 
 
