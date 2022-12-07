@@ -1,0 +1,15 @@
+{
+  "name": "async_await",
+  "version": "1.0.0",
+  "description": "- JS为何而生？JS设计为单线程\r     响应用户的交互， 事件 简单\r     有必要设计成为多线程吗？    Java C++\r     线程是运行程序的最小单元.\r     JS 设计为单线程， 有点足够简单 缺点是脆弱\r     同步代码尽快运行完，耗时的任务怎么办？\r -JS = 单线程 + Event loop(机制)\r     setTimeout fetch 异步的，放入Event Loop里",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.1"
+  }
+}
