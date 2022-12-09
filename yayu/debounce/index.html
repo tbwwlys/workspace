@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            height: 200px;
+            width: 200px;
+            background-color: green;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow-y: scroll;
+        }
+        #innerBox {
+            width: 300px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inp">
+    <div id="box">
+        <div id="innerBox">
+
+        </div>
+
+    </div>
+<script>
+    const inp = document.querySelector('#inp');
+    const oBox = document.querySelector('#box');
+    // DOM 2级事件 一般都使用这个
+    // 注册事件 event loop
+    oBox.addEventListener('click', function(){
+        console.log('biubiu')
+    },true)
+    // DOM 0级事件
+    // oBox.onclick = function(){
+    //     console.log('biubiu')
+    //     // DOM 0级事件
+    // }
+    const innerBox = document.querySelector('#innerBox');
+    // innerBox.addEventListener('click',function(){
+    //     console.log('innerBox');
+    // },true)
+    // innerBox.addEventListener('mousemove', function(){
+    //     console.log('innerBox');
+    // })
+    // innerBox.addEventListener('mouseover', function(){
+    //     console.log('innerBox');
+    // })
+    innerBox.addEventListener('scroll', function(){
+        console.log('scroll');
+    })
+    window.addEventListener('resize', function(){
+        console.log('window');
+    })
+    innerBox.addEventListener('keyup', function(){
+        console.log('keyup');
+    })
+    inp.addEventListener('keyup', function(){
+        console.log('keyup');
+    })
+</script>
+</body>
+</html>
