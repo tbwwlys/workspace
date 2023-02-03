@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function User(username, userage) {
+            this.username = username;
+            this.userage = userage;
+            // this.login = function() {
+            //     console.log("User上的登录方法")
+            // }
+        }
+        function Admin(adminname) {
+            this.deleteUser = function() {
+                console.log("删除一个人")
+            }
+            // this.login = function() {
+            //     // console.log("Admin上的login方法")
+            // }
+        }
+        Object.prototype.login = function() {
+            console.log("Object上的login方法")
+        }
+        Admin.prototype = new User();
+        let admin = new Admin()
+        admin.login()
+        console.log(admin.__proto__.__proto__)
+    </script>
+</body>
+</html>

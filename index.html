@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log(Object.assign({b: 'c'},
+        // Object.defineProperty({}, 'invisible', {
+        // enumerable: false,
+        // value: 'hello'})
+        // ).__proto__)
+        // console.log(Object.prototype.b.prototype)
+        // { b: 'c' }
+        // 给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+        // var searchInsert = function(nums, target) {
+        //     let index = 0;
+        //     for(let i = 0; i < nums.length; i++){
+        //         if(target == nums[i] ) {
+        //             index = i;
+        //             break;
+        //         } else if(target < nums[i]) {
+        //             index = i;
+        //         } else{
+        //             index = nums.length;
+        //         } 
+        //     }
+        //     return index;
+        // };
+        // document.writeln(searchInsert([1,3,5,6],5));
+        //合并两个有序链表
+        // 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+//         function ListNode(val, next) {
+//             this.val = (val===undefined ? 0 : val)
+//             this.next = (next===undefined ? null : next)
+//         }
+//         var mergeTwoLists = function(l1, l2) {
+//     if (l1 === null) {
+//         return l2;
+//     } else if (l2 === null) {
+//         return l1;
+//     } else if (l1.val < l2.val) {
+//         l1.next = mergeTwoLists(l1.next, l2);
+//         return l1;
+//     } else {
+//         l2.next = mergeTwoLists(l1, l2.next);
+//         return l2;
+//     }
+// }; 
+//         document.writeln(mergeTwoLists([1,2,4,6], [3,5,7]));
+        // function Article() {
+        // this.title = 'Inauguration Ceremony Features Kazoo Band';
+        // }
+        // let a1 = new Article();
+        // let a2 = new Article();
+        // a1.auther = 'auther';
+        // document.writeln(a2.auther)
+        // document.writeln(a1.auther)
+        // HashMap<String,String> map = new HashMap<>();
+        // 什么是原型？
+        // 每一个对象都有它的原型对象，它可以使用自己原型对象上的所有属性和方法
+        let cat = {
+            name: "喵喵"
+        }
+        // 给猫的原型对象加一个eat方法
+        // cat.__proto__.eat = function () {
+        //     console.log("吃鱼")
+        // }
+        // cat 可以调用原型对象上的方法 
+        // cat.eat()
+        // 获取原型的两种方法：
+        // 1. 是通过对象的__proto__获取
+        // 2. 是通过构造函数的prototype属性拿到原型拿到原型
+        // 面试题：构造函数中的this指向谁？
+        // 指向new创建的对象
+        // function Cat(name, age) {
+
+        //     this.name = name;
+        //     this.age = age;
+        // }
+        // let cat = new Cat("喵喵", 2);
+        // 通过prototype给构造函数创建出来的对象扩展属性和方法
+        // Cat.prototype.eat = function() {
+        //     console.log("吃鱼")
+        // }
+        // cat.eat();
+        let date = new Date();
+        Date.prototype.formate = function() {
+            let year = this.getFullYear();
+            let month = this.getMonth() + 1;
+            let day = this.getDate();
+            return `${year}年${month}月${day}日`
+        }
+        console.log(date.formate());
+    </script>
+</body>
+</html>

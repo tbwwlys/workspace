@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        .done {
+
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <!-- 双向绑定 -->
+        <!-- 带有修饰符的事件绑定 -->
+        <input type="text" v-model="title" @keydown.enter="addTodo"/>
+        <ul>
+            <li v-for="(todo, index) in todos" :key="index" :class="{done:todo.done}">
+                <input type="checkbox" v-model="todo.done">
+                <span>{{todo.title}}</span>
+            </li>
+        </ul>
+        <div>
+            {{active}}
+            /
+            {{all}}
+        </div>
+        <button v-if="active < all" @click="clear">清理</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data(){
+                return {
+                    td: '',
+                    title: "我是最帅的",
+                    todos: [
+                        {title: "脱单",done: false},
+                        {title: "去名企", done: false},
+                        {title: "吃泡椒鸡爪", done: true}
+                    ]
+                }
+            },
+            methods: {
+                addTodo() {
+                    // console.log("按下了enter")
+                    this.todos.push(this.title)
+                    this.title = ''
+                },
+                clear() {
+                    this.todos = this.todos.filter(v => !v.done)
+                }
+            },
+            computed: {
+                all() {
+                    return this.todos.length;
+                },
+                active() {
+                    return this.todos.filter(todo => !todo.done).length
+                } 
+            }
+            // 
+            // template: `
+            //     {{td}}
+            //     <input type='text' v-model='todo'/>
+            // `
+        })
+        app.mount('#app')
+    </script>
+</body>
+</html>

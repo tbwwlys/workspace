@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="vueNpm">
+        <p>{{num}}</p>
+        <p>{{name}}</p>
+    </div>
+</body>
+<script>
+    const Counter = {
+        data:function() {
+            return {
+                num: 0,
+                name: "张新禧"
+            }
+        }
+    }
+    let app = Vue.createApp(Counter).mount('#vueNpm')
+</script>
+</html>

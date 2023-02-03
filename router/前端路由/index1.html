@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="#/page1">page1</a>
+        <a href="#/page2">page2</a>
+        <a href="#/page3">page3</a>
+        <div id="container"></div>
+    </nav>
+    <script>
+        class HashRouter{
+            constructor() {
+                this.routers = {}
+                window.addEventListener('hashchange', this.load.bind(this), false)
+            }
+            load() {
+                console.log(location.hash.slice(1))
+                let hash = location.hash.slice(1),
+                handler;
+                if(!hash) {
+                    handler = this.routers.index
+                }
+                handler.call(this)
+            }
+            registerIndex(callback = function() {}) {
+                this.routers['index'] = callback
+            }
+        }
+        let router = new HashRouter();
+        let container = document.getElementById('container');
+        router.registerIndex(() => container.innerHTML='我是最帅的'); 
+        router.load();
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="files" multiple/>    <!-- multiple 选择多个文件 -->
+    <div id="list">
+
+    </div>
+    <div id="images">
+
+    </div>
+<script>
+    /* js 新能力 老的设备不支持 */
+    /* 浏览器试探 */
+    /* File 文件对象 */
+    /* FileReader 文件读操作对象 */
+    /*  FileList 文件列表对象 */
+    /* 二进制流对象 Blob */
+    if(!(window.File && window.FileReader && window.FileList && window.Blob)) {
+        alert('当前浏览器不支持');
+    }
+    function handleFileSelect(event) {
+        const { files } = event.target;
+        // console.log(files);
+        if(!files.length) {
+            console.log(files.length)
+            console.log('没有选择文件')
+            return;
+        }
+        console.log('选中的文件信息是：', files)
+        const innerHTML = [];
+        const reImage = /image.*/; // 正则 File type 是不是图片 . 通配符 * 匹配一次或多次
+        for(let file of files) {
+            if(!reImage) {
+                continue; // 执行下一轮
+            }
+            innerHTML.push(`
+            <li>
+                <strong>${file.name}</strong>
+                (${file.type || "n/a"}) - 
+                ${(file.size / (1024 * 1024)).toFixed(2)} Mb
+            </li> 
+            `)
+        }
+        document.querySelector("#list").innerHTML = `<ul>${innerHTML.join("")}</ul>`;
+    }
+    function handleFileSelect(event) {
+        let { files } = event.target;
+        if (!files.length) {
+            return;
+        }
+        let vm = document.createDocumentFragment();/* 碎片化文件存储器 */
+        let re = /image.*/;
+        let loaded = 0; /* 计算加载完成的图片 */
+        let total = 0; /* 所有图片的数量 */
+        for(let file of files) {
+            re.test(file.type) && total++; /* 如果为真则加，如果为假则不加 */
+        }
+        const handleLoadStart = (ev, file) => {
+            console.log(`>>> Start load ${file.name}`)
+        }
+        const handleOnLoad = (ev, file) => {
+            console.log(`<<< End load ${file.name}`)
+            const img = document.createElement('img');
+            img.src = ev.target.result
+            vm.appendChild(img);//挂载多次，开销就少
+            if(++loaded == total) {
+                document.querySelector('#image').appendChild(vm);
+            }
+
+        }
+        for(let file of files) {
+            if(!re.test(file.type)) {
+                continue;
+            }
+            const reader = new FileReader();
+            reader.onloadstart = ev => handleLoadStart(ev, file);
+            reader.onload = ev => handleOnLoad(ev, file)
+            reader.readAsDataURL(file)
+        }
+    }
+    document
+        .querySelector('#files')
+        .addEventListener('change', handleFileSelect, false)
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const Website = {
+            template: '<h2>JSPang.com</h2>'
+        }
+        const Describe = {
+            template: '<div>技术胖的博客</div>'
+        }
+        const Count = {
+            data() {
+                return {
+                    newCount: this.count
+                }
+            },
+            props: {
+                count: {
+                    type: Number,
+                    default: 1
+                }
+            },
+            
+            template: `
+                <div>{{newCount}}<button @click="newCount++">增加</button></div>
+            `
+        }
+        const app = Vue.createApp({
+            data() {
+                return {
+
+                }
+            },
+            components: {
+                'website': Website,
+                'describe': Describe,
+                'count': Count
+
+            },
+            template: `
+                <website/>
+                <describe/>
+                <count/>
+            `
+        })
+        app.mount('#app')
+
+    </script>
+</body>
+</html>

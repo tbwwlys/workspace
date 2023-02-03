@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 @click="add">{{state.count}} * 2 = {{double}}</h1>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // Vue3 composition
+        const {reactive, computed} = Vue;
+        let App = {
+            setup() {//vue3的全新语法
+                const state = reactive({
+                    count: 1
+                })
+                function add() {
+                    state.count++
+                }
+                const double = computed(() => state.count*2);
+                //返回的值就可以在模板直接调用
+                return {
+                    state,
+                    add,
+                    double
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>

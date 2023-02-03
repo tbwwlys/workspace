@@ -4,3 +4,6 @@ function a() {
 
     }
 }
+
+const funcB = a();
+funcB(); //运行时定义

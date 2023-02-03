@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call、apply、bind的区别</title>
+</head>
+<body>
+    <script>
+        //call、apply、bind
+        // call是一个方法，函数的方法
+        // function fun() {
+        //     console.log(this.name)
+        // }
+        // let dog = {
+        //     name: "旺财",
+        //     sayName() {
+        //         console.log("我是" + this.name)
+        //     },
+        //     eat(foot1, foot2) {
+        //         console.log(this.name + "喜欢吃" + foot1 + foot2)
+        //     }
+        // }
+        // let cat = {
+        //     name: '喵喵'
+        // }
+        //call可以调用函数
+        // fun.call() 
+        //call可以改变函数中this的指向
+        // fun.call(cat)
+        // dog.sayName.call(cat)
+        // dog.eat.call(cat, "鱼","肉")
+        // dog.eat.apply(cat,["鱼","肉"])
+        // let n = dog.eat.bind(cat, "鱼", "肉");
+        // n();
+        // 利用call实现继承和多重继承
+        function Animal() {
+            //this指向Cat实例cat
+            this.eat = function() {
+                console.log("吃东西")
+            }
+        }
+        function Fly() {
+            this.fly = function() {
+                console.log("我在飞")
+            }
+        }
+        function Cat() {
+            //this 指向 Cat实例cat
+            Animal.call(this)
+            Fly.call(this)
+            this.sayName = function() {
+                console.log("输出自己的名字")
+            }
+        }
+        let cat = new Cat()
+        cat.eat()
+        cat.sayName()
+        cat.fly()
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise 初体验</title>
+</head>
+<body>
+    <div>
+        <h2>Promise 初体验</h2>
+        <button id="btn">点击抽奖</button>
+    </div>
+    <script>
+        // 生成随机数
+        function rand(n, m) {
+            return Math.ceil(Math.random() * (m - n + 1) + n)
+        }
+        // 获取元素对象
+        const btn = document.querySelector('#btn')
+        btn.addEventListener('click',function() {
+            // 设置 30% 的概率中奖
+            
+            // setTimeout(() => {
+            //     let num = rand(1, 100);
+            //     if(num  <= 30) {
+            //         alert('恭喜你中奖了，宝马一辆')
+            //     } else (
+            //         alert('谢谢惠顾')
+            //     )
+            // }, 2000);
+            let p = new Promise((resolve,reject) => {
+                setTimeout(() => {
+                    let num = rand(1, 100);
+                    if(num  <= 30) {
+                        resolve();
+                    } else {
+                        reject();
+                    }
+                }, 500);
+            })
+            p.then(() => {
+                alert('恭喜你中奖了，宝马一辆')
+            },() => {
+                alert('谢谢惠顾')
+            })
+        })
+        const imgAddress = 'https://img10.360buyimg.com/img/jfs/t1/50166/9/22920/11310/63a1993cE3800216e/105f3d456f0905bb.jpg'
+        const imgPromise = ( url ) => {
+            return new Promise ((resolve, reject) => {
+                const img = new Image();
+                img.src = url;
+                img.onload = () => {
+                    resolve( img );
+
+                };
+                img.onerror = () => {
+                    reject(new Error('图片有误'));
+                }
+            });
+        }
+        imgPromise(imgAddress) 
+            .then((img) => {
+                document.body.appendChild(img);
+            },(err) => {
+                document.body.innerHTML = err;
+            })
+            // .catch(err => {
+            //     document.body.innerHTML = err;
+            // });
+    </script>
+</body>
+</html>

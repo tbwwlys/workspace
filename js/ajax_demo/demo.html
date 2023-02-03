@@ -17,10 +17,10 @@
             const todosUL = document.querySelector('#todos');
             const todoInput = document.querySelector('#todoInput');
             // 存储能力 
-            const todos = JSON.parse(localStorage.getItem('todos')) || [];
+            const todos = JSON.parse(localStorage.getItem('todos')) || []
             todos.forEach(todo => {
                 todosUL.innerHTML += `
-                    <li>${todos.text}</li>
+                    <li>${todo.text}</li>
                 `
             })
             todoInput.addEventListener('change', function(event) {

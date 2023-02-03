@@ -6,66 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        #box {
-            height: 200px;
-            width: 200px;
-            background-color: green;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow-y: scroll;
-        }
-        #innerBox {
-            width: 300px;
-            height: 100px;
-            background-color: yellow;
-        }
+    #box {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        overflow-y: scroll;
+        /* overflow: hidden; */
+    }
+    .innerBox {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+    }
     </style>
 </head>
 <body>
     <input type="text" id="inp">
     <div id="box">
-        <div id="innerBox">
-
-        </div>
-
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <div class="innerBox"></div>
+        <!-- <div class="innerBox"></div> -->
     </div>
-<script>
-    const inp = document.querySelector('#inp');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script>
     const oBox = document.querySelector('#box');
-    // DOM 2级事件 一般都使用这个
-    // 注册事件 event loop
-    oBox.addEventListener('click', function(){
-        console.log('biubiu')
-    },true)
-    // DOM 0级事件
-    // oBox.onclick = function(){
-    //     console.log('biubiu')
-    //     // DOM 0级事件
+    // const app = document.querySelector('#app');
+    const hammertime = new Hammer(oBox);
+    hammertime.on('pan', function(ev) {
+        console.log(ev, '////');
+    });
+    // const innerBox = document.querySelector('.innerBox');
+    // DOM2级事件
+    // 注册事件 event loop 
+    // oBox.addEventListener('click', function() {
+    //     console.log('biubiubiu');
+    // }, true)
+    // oBox.addEventListener('mouseover', function() {
+    //     console.log('mouseover')
+    // })
+    // oBox.addEventListener('mouseout', function() {
+    //     console.log('mouseout')
+    // })
+    // oBox.addEventListener('mousemove', function() {
+    //     // 触发频繁  服务器  减少一些触发？ 节流
+
+    //     console.log('mousemove')
+    // })
+    // oBox.addEventListener('scroll', function() {
+    //     // 触发频繁  服务器  减少一些触发？ 节流
+
+    //     console.log('scroll')
+    // })
+    oBox.addEventListener('keyup', function() {
+        // 触发频繁  服务器  减少一些触发？ 节流
+
+        console.log('keyup')
+    })
+
+    window.addEventListener('resize', function() {
+        console.log('resize');
+    })
+
+    // innerBox.addEventListener('click', function() {
+    //     console.log('zhizhizhi');
+    // }, true)
+    // DOM 0 级事件
+    // oBox.onclick= function() {
+    //     console.log('biu');
     // }
-    const innerBox = document.querySelector('#innerBox');
-    // innerBox.addEventListener('click',function(){
-    //     console.log('innerBox');
-    // },true)
-    // innerBox.addEventListener('mousemove', function(){
-    //     console.log('innerBox');
-    // })
-    // innerBox.addEventListener('mouseover', function(){
-    //     console.log('innerBox');
-    // })
-    innerBox.addEventListener('scroll', function(){
-        console.log('scroll');
+    document.getElementById('inp').addEventListener('keydown', function() {
+        console.log('keydown');
     })
-    window.addEventListener('resize', function(){
-        console.log('window');
-    })
-    innerBox.addEventListener('keyup', function(){
-        console.log('keyup');
-    })
-    inp.addEventListener('keyup', function(){
-        console.log('keyup');
-    })
-</script>
+    </script>
 </body>
 </html>
