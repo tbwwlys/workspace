@@ -4,7 +4,7 @@ import App from './App.vue'
 import Element3 from 'element3'
 import 'element3/lib/theme-chalk/index.css'
 import router from './router/index'
-import './reset.css'
+import './assets/css/reset.css'
 
 createApp(App)
 // 链式调用

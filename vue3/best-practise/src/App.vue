@@ -17,7 +17,10 @@
         <router-link to="/">Home</router-link>
       </div>
       <div>
-        <router-link to="/about">About</router-link>
+        <router-link to="/About">About</router-link>
+      </div>
+      <div>
+        <router-link to="/Other">Other</router-link>
       </div>
     </el-aside>
     <el-container>
