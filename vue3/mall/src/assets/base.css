@@ -1,0 +1,32 @@
+
+/* css变量  复用和管理 */
+:root {
+  --vt-c-white: #fff;
+  --vt-c-indiogo: #2c3e50;
+  --vt-c-text-light-1: var(--vt-c-indiogo);
+  --color-text: var(--vt-c-text-light-1);
+  --color-background: var(--vt-c-white)
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;   /* 盒模型的计算方式 IE盒模型 */
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--color-text);
+    background: var(--color-background);
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+        Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+    text-rendering: optimizeLegibility; /* optimize Legibility 优化易读性 */
+    -webkit-font-smoothing: antialiased;  /* 抗锯齿 */
+    -moz-osx-font-smoothing: grayscale; /* 灰度 */
+}

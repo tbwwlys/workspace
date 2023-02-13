@@ -70,6 +70,7 @@
             img.src = ev.target.result
             vm.appendChild(img);//挂载多次，开销就少
             if(++loaded == total) {
+                /* 如果没有文档碎片 访问images DOM次数多 性能就不好 */
                 document.querySelector('#image').appendChild(vm);
             }
 
