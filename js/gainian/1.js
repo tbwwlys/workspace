@@ -6,5 +6,6 @@ function sum(a, b) {
     console.log(Array.prototype.toString.call(args))
 //     console.log(Array.prototype.toString.call(arguments))
 //     console.log(Array.prototype.toString.call(arguments, args))
+console.log(args)
 }
 sum(1, 2)

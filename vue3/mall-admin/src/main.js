@@ -8,7 +8,12 @@ import {
     ElMenu,
     ElSubMenu,
     ElMenuItemGroup,
-    ElMenuItem
+    ElMenuItem,
+    ElForm,
+    ElFormItem,
+    ElInput,
+    ElButton,
+    ElCheckbox
 } from 'element-plus'
 import 'element-plus/dist/index.css'
 // 启用路由 路由接管项目
@@ -28,4 +33,9 @@ app
     .use(ElSubMenu)
     .use(ElMenuItemGroup)
     .use(ElMenuItem)
+    .use(ElForm)
+    .use(ElFormItem)
+    .use(ElInput)
+    .use(ElButton)
+    .use(ElCheckbox)
     .mount('#app')   // 挂载
