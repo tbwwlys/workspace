@@ -1,7 +1,9 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { getPageTitle, getLocal } from '@/utils'
+import { getPageTitle, getLocal, setLocal } from '@/utils'
+import { getUserProfile } from '@/service/user.js'
+import { useUserStore } from '@/store/user.js'
 
 const state = reactive({
   defaultOpen: ['1','2'],
@@ -37,6 +39,16 @@ router.beforeEach((to, from, next) => {
       next()
     }
   }
+})
+onMounted(async () => {
+  const userInfo = getLocal('profile') || '';
+  console.log(userInfo.loginUserName)
+  if(!userInfo) {
+    const userInfo = await getUserProfile()
+    // console.log(userInfo)
+    setLocal('profile', userInfo)
+  }
+  
 })
 </script>
 

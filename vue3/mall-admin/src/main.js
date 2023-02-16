@@ -13,9 +13,12 @@ import {
     ElFormItem,
     ElInput,
     ElButton,
-    ElCheckbox
+    ElCheckbox,
+
 } from 'element-plus'
 import 'element-plus/dist/index.css'
+import { createPinia } from 'pinia' //
+
 // 启用路由 路由接管项目
 // 组件库 按需加载
 // css reset 
@@ -25,7 +28,8 @@ import 'element-plus/dist/index.css'
 
 const app = createApp(App)  //web app
 app
-    .use(router)
+    .use(router)    //前端路由
+    .use(createPinia()) // 中央数据管理
     //全局组件
     .use(ElContainer)
     .use(ElAside)

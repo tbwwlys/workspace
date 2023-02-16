@@ -8,5 +8,10 @@ export const getPageTitle = (pathName) => {
 }
 
 export const getLocal = (name) => {
-    return JSON.parse(localStorage.getItem(name)) || ''
+    // return JSON.parse(localStorage.getItem(name))
+    return localStorage.getItem(name)
+}
+// html5提供的本地keyValue存储 
+export const setLocal = (key, val) => {
+    localStorage.setItem(key, JSON.stringify(val))
 }

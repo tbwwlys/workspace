@@ -16,7 +16,7 @@ let str = JSON.stringify(ary); //序列化
     // [ 本身是正则的运算符号 \[转译
     // replace 方法， 正则匹配到的替换成 空
 // ary = str.replace(/(\[|\])/g, '').split(',').map(item => item)  
-// str = str.replace(/(\[|\])/g, '')
+// str = str.replace(/(\[|\])/g, '')    () 在正则中表示 一个或多个 [ ]
 // console.log(Object.prototype.toString(str))
 // str = '[' + str + ']'
 // console.log(Object.prototype.toString(str))

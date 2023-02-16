@@ -50,9 +50,10 @@
 <script setup>
 import { reactive, ref, onMounted } from 'vue'
 import { login } from '@/service/user.js'
-import {
-    md5
-}   from 'js-md5'
+import md5  from 'js-md5'
+import { setLocal } from '@/utils'
+import { routerKey } from 'vue-router';
+    
 
 const loginForm = ref(null) // 初始值为空，组件还没有挂载
 const state = reactive ({
@@ -80,6 +81,14 @@ const submitForm = () => {
                 userName: state.formData.username || '',
                 passwordMd5: md5(state.formData.password)
             })
+            console.log(data)
+            // 服务器签发的令牌
+            setLocal('token', data);
+            routerKey.push({
+                path: '/'
+            })
+        } else {
+
         }
     })
 }
