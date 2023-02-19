@@ -1,6 +1,6 @@
 // 手写Map
 // thisArg 指定 callbackFn 内部的this 指向
-Array.prototype.map = function(callbackFn, thisArg) {
+let newMap = Array.prototype.map = function(callbackFn, thisArg) {
     //this -> [1,2,3]
     //obj
     // Array.prototype.map.call(undefined) 
@@ -23,7 +23,7 @@ Array.prototype.map = function(callbackFn, thisArg) {
         // 下标
         // this 第三个参数
         if(k in O) {
-            let KValue = O[k] //每一项 
+            let KValue = O[k] // 每一项 
             let IdentifierValue = callbackFn.call(T, KValue, k, O)
             A[k] = IdentifierValue
         }
@@ -34,9 +34,9 @@ Array.prototype.map = function(callbackFn, thisArg) {
 
 let nums = [1,2,3]
 let obj = {
-    val: '值'
+    val: '值' 
 }
-let newNums = nums.map(function(item, index, array) {
+let newNums = nums.newMap(function(item, index, array) {
     return item + index + array[index] + this.val;
 }, obj)
 console.log(newNums)
