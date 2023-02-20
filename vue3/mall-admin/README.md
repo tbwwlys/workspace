@@ -122,3 +122,11 @@
         定制  有一个slot 插槽区域
         允许在组件中间 放置到slot区域
         有很多个， template + #header
+
+- 后台列表页通用开发逻辑
+    1. ElTable > ElTableColumn
+        thead + tbody 循环输出
+        row + column
+        scope.row scope 当前这一行
+        
+    2. 
