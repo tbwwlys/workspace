@@ -1,25 +1,29 @@
 <template>
-    <child ref="childComp" :count="count" :msg2="msg2" :msg1="msg1" @myClick="onMyClick"></child> 
-    <child :count="count" :msg2="msg2" :msg1="msg1" @myClick="onMyClick"></child> 
+    <!-- <child ref="childComp" :count="count" :msg2="msg2" :msg1="msg1" @myClick="onMyClick"></child> 
+    <child :count="count" :msg2="msg2" :msg1="msg1" @myClick="onMyClick"></child>  -->
+    <child v-model:key="key" v-model:value="value"></child>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import child from './Child.vue'
 
-const childComp = ref(null)
-const count = ref(0)
-const msg1 = ref('msg1')
-const msg2 = ref('msg2')
-const onMyClick = () => {
+const key = ref('11111')
+const value = ref('22222')
+
+// const childComp = ref(null)
+// const count = ref(0)
+// const msg1 = ref('msg1')
+// const msg2 = ref('msg2')
+// const onMyClick = () => {
 
 
-}
+// }
 
-onMounted(() => {
-    console.log(childComp.value.childName)
-    childComp.value.someMethod()
-})
+// onMounted(() => {
+//     console.log(childComp.value.childName)
+//     childComp.value.someMethod()
+// })
  // import Child from "./Child.vue"
 // import { ref, reactive } from "vue"
 // const childComp = ref(null) // ref 标注 拿到组件对象或DOM对象

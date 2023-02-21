@@ -11,6 +11,7 @@ const state = reactive({
   currentPath: '/'
 })
 
+const userStore = useUserStore();
 const router = useRouter() 
 // 使用vue-router的hooks 函数，直接拿到路由对象
 
@@ -43,11 +44,12 @@ router.beforeEach((to, from, next) => {
 onMounted(async () => {
   const userInfo = getLocal('profile') || '';
   console.log(userInfo.loginUserName)
-  if(!userInfo) {
-    const userInfo = await getUserProfile()
-    // console.log(userInfo)
-    setLocal('profile', userInfo)
-  }
+  // if(!userInfo) {
+  //   const userInfo = await getUserProfile()
+  //   // console.log(userInfo)
+  //   setLocal('profile', userInfo)
+  // }
+  const { data } = await getUserProfile()
   
 })
 </script>

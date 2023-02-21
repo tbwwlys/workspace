@@ -15,7 +15,6 @@ let newMap = Array.prototype.map = function(callbackFn, thisArg) {
     // console.log(typeof this)
     // console.log(typeof O)
     let T = thisArg;
-
     let len = O.length;
     let A = new Array(len); //跟以前的数组没有影响，全新的内存分配
     for (let k = 0; k < len; k++) {

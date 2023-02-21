@@ -18,4 +18,6 @@
 
 - props 父组件 传值给 子组件
 - emit  子组件 传值给 父组件
-- expose
+- expose/ ref   expose 向外暴露 + ref 父组件 去调用子组件属性和方法
+- attrs props 之外 父组件向子组件传递数据
+- v-model 

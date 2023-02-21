@@ -28,5 +28,5 @@ let obj = {
 //     return value + obj.age + obj.name;
 // },obj)
 console.log(typeof newMap)
-console.log(Object.prototype.toString(newMap))
+console.log()
 // console.log(newNums)

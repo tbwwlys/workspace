@@ -5,7 +5,7 @@ import Child from './components/Child.vue'
 
 <template>
   <Parent>
-
+    
   </Parent>
 </template>
 
