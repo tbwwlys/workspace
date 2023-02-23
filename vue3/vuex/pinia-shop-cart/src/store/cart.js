@@ -29,7 +29,7 @@ export const useCartStore = defineStore({
             }
         },
         async purchaseItems() {
-
+            
         }
     }
 })

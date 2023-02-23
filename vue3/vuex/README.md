@@ -36,3 +36,5 @@
     5. vuex 数据流转流程
         - root(Store) -> modules(cart | products) => state(声明) 状态的查找
         - 数据(服务器端) -> api(接口模块 products) -> actions(管理接口请求)
+            mutations(commit 唯一修改数据 actions 里调用) -> state(写操作)
+            
