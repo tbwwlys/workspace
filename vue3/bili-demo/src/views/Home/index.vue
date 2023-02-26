@@ -3,6 +3,14 @@ import AppHeader from '@/components/AppHeader.vue'
 import HomeChannel from '@/components/HomeChannel.vue'
 import HomeSwipe from '@/components/HomeSwipe.vue'
 import HomeVideoList from '@/components/HomeVideoList.vue'
+import { onMounted } from 'vue'
+import axios from 'axios'
+import { getSwiperList, getVideosList } from '@/service/home.js'
+
+onMounted(() => {
+    const swiperData = await getSwiperList()
+    const videoData = await getVideosList()
+})
 
 </script>
 
