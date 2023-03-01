@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg id="container-svg"></svg>
+    <script src="./index.js"></script>
+    <script>
+        function createSVGElement(type) {
+            return document.createElentNS("http://www.w3.org/2000/svg", type);
+        }
+        const svg = document.getElementById('container-svg');
+        svg.setAttribute('width', containerWidth)
+        svg.setAttribute('height',containerHeight)
+        svg.setAttribute('viewBox', [0, 0, containerWidth, containerHeight])
+    </script>
+</body>
+</html>
