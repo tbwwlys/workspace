@@ -7,4 +7,5 @@
 - SVG Canvas 区别？
     数据简单，SVG优秀 缺点是性能不好，频繁的操作
     DOM，SVG 依托标签来完成功能
-    canvas 绘图API 更丰富
+    canvas 绘图API 更丰富   GPU负责  大数据
+    API 有点多， 底层多 echarts库 
