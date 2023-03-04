@@ -19,7 +19,8 @@ export const useProductsStore = defineStore('products',() => {
         all.value = data
     }
     return {
-        all
+        all,
+        fetchAll
     }
 
 })
