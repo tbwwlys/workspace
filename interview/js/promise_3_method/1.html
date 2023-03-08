@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const upload = function(blod) {
+            let time = Math.round(100 + 500 * Math.random());
+            return new Promise((resolve, reject) => {
+                console.log(`run ${time}ms`)
+                if(Math.random() > 0.5) {
+                    setTimeout(resolve, time, 'Promise resolved' + time + 'ms');
+                } else {
+                    setTimeout(reject, time, 'Promise reject' + time + 'ms')
+                }
+            })
+        }
+        const load = function(url) {
+            // 同upload
+        };
+        (async () => {
+                
+            try {
+                let result = await Promise.all([upload(0), upload(1), upload(2)]);
+                console.log(result);
+            } catch (err) {
+                console.error(err);
+            }
+        })();
+        let uploadc = function(blod) {
+            let time = Math.round(100 + 500 * Math.random());
+            return new Promise((resolve, reject) => {
+                console.log(`run ${time}ms`)
+                if(Math.random() > 0.5) {
+                    setTimeout(resolve, time, 'promise resolve' + time + 'ms')
+                } else {
+                    setTimeout(reject, time, 'promise reject' + time + 'ms')
+                }
+            })
+        } 
+    </script>
+</body>
+</html>
