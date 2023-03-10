@@ -1,29 +1,50 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import MemberHeader from './MemberHeader.vue'
+import { ref, onMounted, Ref } from 'vue'
+import { MemberEntity } from './model/memberEntity';
+import { fetchMemberAsync } from './api/index'
+import { members } from './api/member'
+import MemberRow from './MemberRow.vue'
+
+const membersRef:Ref<MemberEntity[]> = ref([])
+onMounted(async () => {
+  const data = await fetchMemberAsync() {
+    
+  }
+  // membersRef.value = members;
+})
+
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+<div class="row">
+  <h2>Members Page</h2>
+  <table class="table">
+    <thead>
+      <MemberHeader></MemberHeader>
+    </thead>
+    <tbody>
+      <MemberRow
+        v-for="member in membersRef"
+        :key="member.id"
+        :member = member
+        ></MemberRow>
+      <!-- <tr v-for="member in membersRef" key="member.id">
+        <td>
+          <img :src="member.avatar_url">
+        </td>
+        <td>
+          {{ member.id }}
+        </td>
+        <td>
+          {{ member.login }}
+        </td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
