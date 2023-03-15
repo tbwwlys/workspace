@@ -1,33 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div {
-            box-sizing: content-box; /* IE盒模型 */
-            width: 200px;
-            height: 200px;
-            padding: 20px;
-        }
-        span {
-            
-            margin: 20px;
-            border: medium solid red;
-        }
-        input {
-            width: 200px;
-            height: 200px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <!-- import CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body>
-    <div>我是神</div>
-    <span>
-        我是魔
-    </span>
-    <input type="text" value="1234我是神魔">
+  <div id="app">
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+      <p>Try Element</p>
+    </el-dialog>
+  </div>
 </body>
+  <!-- import Vue before Element -->
+  <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+  <!-- import JavaScript -->
+  <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.15.13/index.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: function() {
+        return { visible: false }
+      }
+    })
+  </script>
 </html>
