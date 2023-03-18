@@ -8,6 +8,7 @@
 </head>
 <body>
 <script>
+    document.cookie = 'a = 1';
 // 前后端通信
 fetch('http://localhost:3000/say')
     .then(data => data.json())

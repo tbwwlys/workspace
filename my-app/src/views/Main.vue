@@ -5,7 +5,7 @@
                 <common-aside></common-aside>
             </el-aside>
             <el-container>
-                <el-header >Aside</el-header>
+                <el-header>Aside</el-header>
                 <el-main>
                     <router-view></router-view>
                 </el-main>

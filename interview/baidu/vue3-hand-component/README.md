@@ -1,7 +1,9 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+# 从0手写常用组件
+Input   组件不是标签 他是很多标签+ css +js 集合
+    - 通用组件
+    - 基础需求 css input v-model
+    - 禁用  disabled
+    - type password textarea
+    - 可清空的功能
+    - 尺寸
+    - 

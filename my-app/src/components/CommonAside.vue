@@ -37,7 +37,7 @@ export default {
     data() {
         return {
             isCollapse: false,
-            manuData: [ 
+            manuData: [
                 {
                     path: '/',
                     name: 'home',
