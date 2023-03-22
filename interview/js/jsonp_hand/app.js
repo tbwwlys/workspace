@@ -21,6 +21,7 @@ var corsOptions = {
 app.use(cors(corsOptions))
 app.get('/say', (req, res) => {
     console.log(req.query, '//////')
+    let callback = req.query.callback || 'callback'
     let obj = {
         name:'张总',
         spec: '家里有矿'
@@ -28,7 +29,7 @@ app.get('/say', (req, res) => {
     // 告诉用户浏览器使用utf8来显示
 
     res.setHeader('Content-Type', 'text/js;charset=utf8')
-    res.end('callback(' + JSON.stringify(obj) + ')')   // 传递的是字符串
+    res.end(`${callback}(${JSON.stringify(obj)})`)   // 传递的是字符串
 })
 
 app.get('/other', (req, res) => {

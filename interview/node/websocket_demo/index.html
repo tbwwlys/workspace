@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <input type="text" class="inp">
+        <button class="btn-send">发送</button>
+    </div>
+    <ul class="message">
+
+    </ul>
+    <script>
+        window.onload = function() {
+            let ws = null;
+            let inp = document.querySelector('.inp')
+            let ulEle = document.querySelector('message')
+            let messageData = {
+                fromUserId: Math.ceil(Math.random() * 10000),
+                content: ''
+            }
+            function connectWebSocket() {
+                ws = new WebSocket('ws://localhost:3000')
+                ws.onopen = () => {
+                    console.log('链接服务器WebSocket成功')
+                    console.log(ws)
+                }
+                ws.onmessage = (msg) => {
+                    let message = JSON.parse(msg.data)
+                    console.log('受到消息', message)
+                    ulEle.innerHTML += `
+                        <li class='b'>${message.content}</li>
+                    `
+                }
+            } 
+            connectWebSocket()
+            document.querySelector('.btn-send').addEventListener('click', () => {
+                let msg = {
+                    ...msgData,
+                    content: inp.value,
+                    type: 'text'
+                }
+                ws.send(JSON.stringify(msg))
+                inp.value = ''
+            })
+        }
+    </script>
+</body>
+</html>
