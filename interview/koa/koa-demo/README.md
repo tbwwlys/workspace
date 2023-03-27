@@ -71,3 +71,5 @@
     viewport 用于手机适配 电脑端不用
     移动端 init-scale=1.0 width=device-width (user-scalable=no 手指缩放页面,现在过时了,由于缩放会误操作)
     乔布斯开创了移动时代,pc更多
+    PC 一套 nuxt
+    mobile SPA

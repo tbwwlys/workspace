@@ -3,13 +3,22 @@ const config = require('./config/default.js')
 const app = new Koa()
 const path = require('path')
 const views = require('koa-views')
+const staticCache = require('koa-static-cache')
+const bodyParser = require('koa-bodyparser')
 // mvc 
 const signupRouter = require('./router/signup.js')
 const postsRouter = require('./router/posts.js')
 
+app.use(staticCache(path.join(__dirname, './public'), {dynamic: true}, {
+    maxAge: 15*24*60*60
+}))
 // views 在哪里
 app.use(views(path.join(__dirname, './views'), {
     extension: 'ejs'
+}))
+
+app.use(bodyParser({
+    formLimit: '1mb'
 }))
 
 app.use(signupRouter.routes())
