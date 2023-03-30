@@ -8,6 +8,7 @@ const bodyParser = require('koa-bodyparser')
 // mvc 
 const signupRouter = require('./router/signup.js')
 const postsRouter = require('./router/posts.js')
+const signinRouter = require('./router/signin.js')
 
 app.use(staticCache(path.join(__dirname, './public'), {dynamic: true}, {
     maxAge: 15*24*60*60
@@ -22,6 +23,7 @@ app.use(bodyParser({
 }))
 
 app.use(signupRouter.routes())
+app.use(signinRouter.routes())
 app.use(postsRouter.routes())
 
 // 如何记录一个请求所花时间

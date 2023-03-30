@@ -73,11 +73,21 @@ exports.postSignup = async ctx => {
             )
                
         })
-        if(upload) {
-            // 添加用户了
-            await userModel.insertData([name, md5(password), imgName + '.png', moment().format('YYYY-MM-DD HH:mm:ss')])
-
-        }   
+        try {
+            // console.log([name, md5(password), imgName + '.png',
+            //     moment().format('YYYY-MM-DD HH:mm:ss')])
+            await userModel.insertData([name, md5(password), imgName + '.png',
+                 moment().format('YYYY-MM-DD HH:mm:ss')])
+            ctx.body = {
+                code: 200,
+                message: '注册成功'
+            } 
+        } catch(err) {
+            ctx.body = {
+                code: 500,
+                message: '注册失败,请重试'
+            }
+        }  
     } catch(err) {
         ctx.body = {
             code: 500,
