@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+class Promise{
+    constructor(executor) {
+        // 初始化state 为等待态
+        this.state = 'pending';
+        // 成功的值
+        this.value = undefined;
+        // 失败的原因
+        this.reason = undefined;
+        // 成功
+        let resolve = () => {
+            if (this.state === 'pending') {
+                this.state = 'fullfilled';
+                this.value = value;
+            }
+        };
+        // 失败
+        let reject = (reason) => {
+            if(this.state === 'pending') {
+                this.state = 'rejected';
+                this.reason = reason;
+            }
+        };
+        // 立即运行
+        try {
+            executor(resolve, reject);
+        } catch (err) {
+
+        }   
+        
+    }
+}
+</script>
+</body>
+</html>
