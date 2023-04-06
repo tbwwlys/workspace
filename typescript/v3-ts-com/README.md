@@ -20,3 +20,11 @@
 - defineEmits
 // 运行时， const emit = defineEmits(['change', 'update'])
 // 基于类型 对触发事件有更好的控制
+
+- 数据接口怎么做？
+   - /api   // 表示接口地址，后端工程师 接口路径的开始，约定
+
+- 前后端分离
+   前端 vue  3000
+   后端 koa  8080
+   

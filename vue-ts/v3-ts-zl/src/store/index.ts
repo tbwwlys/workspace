@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-import { GlobalDataProps } from '../types';
+import { GlobalDataProps, GlobalErrorProps } from '../types';
 
 const store = createStore<GlobalDataProps>({
     state: {
@@ -8,7 +8,19 @@ const store = createStore<GlobalDataProps>({
             nickname: '张总',
             
         },
-        token: ''
+        token: '',
+        loading: false,
+        error: {
+            status: false
+        }
+    },
+    mutations: {
+        setLoading(state, status) {
+            state.loading = status
+        },
+        setError (state, e: GlobalErrorProps) {
+            state.error = e
+        }
     }
 })
 

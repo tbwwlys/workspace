@@ -1,0 +1,22 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "imageUri": "https://gd-hbimg.huaban.com/413c1a8f0b1e941da860bade9bd57e3709566721126958-L6qcxw_fw658webp",
+            "type": "url",
+            "target": "www.baidu.com"
+        },
+        {
+            "id": 2,
+            "imageUri": "https://gd-hbimg.huaban.com/311d928f64bb3a03503827e869d184bf121bd23b1d543-OVXxON_fw658webp",
+            "type": "url",
+            "target": "www.baidu.com"
+        },
+        {
+            "id": 3,
+            "imageUri": "https://gd-hbimg.huaban.com/b576c9f150c43176272e28fd7df07c388744ac8d34de9-6nHbK7_fw658webp",
+            "type": "url",
+            "target": "www.baidu.com"
+        }
+    ]
+}

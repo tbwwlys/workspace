@@ -16,11 +16,14 @@ class Promise{
         this.value = undefined;
         // 失败的原因
         this.reason = undefined;
+        this.onResolvedCallbacks = [];
+        this.onRejectedCallbacks = [];
         // 成功
-        let resolve = () => {
+        let resolve = (value) => {
             if (this.state === 'pending') {
-                this.state = 'fullfilled';
+                this.state = 'fulfilled';
                 this.value = value;
+                this.onResolvedCallbacks.forEach(fn => fn())
             }
         };
         // 失败
@@ -28,17 +31,44 @@ class Promise{
             if(this.state === 'pending') {
                 this.state = 'rejected';
                 this.reason = reason;
+                this.onRejectedCallbacks.forEach(fn => fn())
             }
         };
         // 立即运行
         try {
             executor(resolve, reject);
         } catch (err) {
-
+            reject(err)
         }   
         
     }
+    then(onFulfilled, onRejected) {
+        if(this.state === 'fulfilled') {
+            onFulfilled(this.value)
+        }
+        if(this.state === 'rejected') {
+            onRejected(this.reason)
+        }
+        if(this.state === 'pending') {
+            this.onResolvedCallbacks.push(() => {
+                onFulfilled(this.value)
+            })
+            this.onRejectedCallbacks.push(() => {
+                onRejected(this.reason)
+            })
+        }
+    }
 }
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(1)
+    }, 1000)
+})
+p.then((data) => {
+    console.log(data)
+}, () => {
+    
+})
 </script>
 </body>
 </html>

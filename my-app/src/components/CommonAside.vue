@@ -89,6 +89,11 @@ export default {
         handleClose(key, keyPath) {
             console.log(key, keyPath);
         }
+    },
+    computed: {
+        noChildren() {
+            
+        }
     }
 }
 </script>
